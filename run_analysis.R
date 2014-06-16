@@ -91,7 +91,8 @@ colnames(X_tidy2) <- gsub("[(),-]","",names(X_tidy2))
 names(X_tidy2)<-c(names(X_tidy2[1:2]),paste("Average",colnames(X_tidy2[3:ncol(X_tidy2)]),sep = "."))
 
 # - write codebook to file
-write.table(names(X_tidy2),'codebook.txt', quote=FALSE, row.names=FALSE, col.names=FALSE)
+# - uncomment if you wish to regenerate the codebook
+# write.table(names(X_tidy2),'codebook.txt', quote=FALSE, row.names=FALSE, col.names=FALSE)
 
 # - write tidy data to file
 write.table(X_tidy2,file=output_file,sep=",",quote=FALSE,row.names=FALSE,col.names=TRUE)
