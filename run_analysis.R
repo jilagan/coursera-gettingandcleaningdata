@@ -6,6 +6,13 @@
 # 4. Appropriately labels the data set with descriptive variable names. 
 # 5. Creates a second, independent tidy data set with the average of each variable for each activity and each subject. 
 
+# Library declarations; Uncomment as needed.
+# library(plyr)
+# library(data.table)
+# library(Hmisc)
+# library(sqldf)
+
+
 # Declare useful variables
 # Relative working directory of data
 data_dir <- "../UCI HAR Dataset/"
@@ -18,6 +25,8 @@ print(test_dir)
 
 # Files
 features_file <- paste0(data_dir,"features.txt")
+activity_labels_file <- paste0(data_dir,"activity_labels.txt")
+output_file <- paste0(data_dir,"tidy_data.txt")
 
 # Clear variables in working space
 if (exists("X_train")) rm(X_train)
@@ -29,8 +38,7 @@ if (exists("subject_test")) rm(subject_test)
 if (exists("X")) rm(X)
 if (exists("y")) rm(y)
 if (exists("subject")) rm(subject)
-if (exists("X_extracted")) rm(X_extracted)
-if (exists("y_extracted")) rm(y_extracted)
+if (exists("X_tidy")) rm(X_tidy)
 
 
 # Merge the training and test sets to create one data set
@@ -51,19 +59,31 @@ features <- read.table(features_file)
 # -- Columns to extract
 meaningfulFeatures <- features[grep("[mM]ean|[sS]td",features$V2),]
 meaningfulCols <- features$V1[grep("[mM]ean|[sS]td",features$V2)]
-X_extracted <- X[,meaningfulCols]
-y_extracted <- y[,meaningfulCols]
+X_tidy <- X[,meaningfulCols]
 
-# Add descriptive activity names
+
 
 # Use descriptive labels
-
+colnames(X_tidy) <- meaningfulFeatures$V2
 
 # Create tidy data set with the average of each activity and each subject
-# - merge subject info with X and y
+# - merge activity and subject info with X
+X_tidy <- cbind(X_tidy, y)
+colnames(X_tidy)[length(X_tidy)] <- "activity.id"
+X_tidy <- cbind(X_tidy, subject)
+colnames(X_tidy)[length(X_tidy)] <- "subject.id"
 
-# - get average/mean
+# Add descriptive activity names
+# -- lookup activity names
+activity_labels <-  read.table(activity_labels_file)
+X_tidy <- merge(X_tidy, activity_labels, by.x="activity.id", by.y="V1")
+colnames(X_tidy)[length(X_tidy)] <- "activity"
+# -- remove activity.id column
+X_tidy$activity.id <- NULL
+
+# - get average/mean by activity by subject
+X_tidy2<-aggregate(X_tidy[,1:(length(names(X_tidy))-2)], list(subject=X_tidy$subject.id,activity=X_tidy$activity),mean)
 
 # - write to file
-
+write.table(X_tidy2,file=output_file,sep=",",quote=FALSE,row.names=FALSE,col.names=TRUE)
 
