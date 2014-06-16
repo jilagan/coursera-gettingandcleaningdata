@@ -39,6 +39,7 @@ if (exists("X")) rm(X)
 if (exists("y")) rm(y)
 if (exists("subject")) rm(subject)
 if (exists("X_tidy")) rm(X_tidy)
+if (exists("X_tidy2")) rm(X_tidy2)
 
 
 # Merge the training and test sets to create one data set
@@ -82,7 +83,12 @@ colnames(X_tidy)[length(X_tidy)] <- "activity"
 X_tidy$activity.id <- NULL
 
 # - get average/mean by activity by subject
-X_tidy2<-aggregate(X_tidy[,1:(length(names(X_tidy))-2)], list(subject=X_tidy$subject.id,activity=X_tidy$activity),mean)
+X_tidy2<-aggregate(X_tidy[,1:(length(names(X_tidy))-2)], list(activity=X_tidy$activity,subject=X_tidy$subject.id),mean)
+
+# clean up column names
+colnames(X_tidy2) <- gsub("[(),-]","",names(X_tidy2))
+# - leave first two column names untouched. Append 'Average' to the rest of the columns.
+names(X_tidy2)<-c(names(X_tidy2[1:2]),paste("Average",colnames(X_tidy2[3:ncol(X_tidy2)]),sep = "."))
 
 # - write to file
 write.table(X_tidy2,file=output_file,sep=",",quote=FALSE,row.names=FALSE,col.names=TRUE)
