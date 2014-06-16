@@ -12,8 +12,6 @@ git clone https://github.com/jilagan/coursera-gettingandcleaningdata.git
 
 3. In R, set the working directory to "coursera-gettingandcleaningdata"
 
-4. Run run_analysis.R as follows:
-
-source('run_analysis.R')
+4. Run run_analysis.R as follows: source('run_analysis.R')
 
 5. Inspect the file 'tidy_data.txt' written under the 'UCI HAR Dataset" directory.
