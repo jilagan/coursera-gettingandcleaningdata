@@ -4,11 +4,13 @@ coursera-gettingandcleaningdata
 Coursera Getting and Cleaning Data Final Project
 
 Implementation notes:
+
 * I chose all columns with mean and std in the name, regardless of whether they would be ultimately meaningful or not.
 * I didn't combine variables with X, Y and Z since I wasn't sure if it would make sense to do so.
 * The final tidy data is described in CodeBook.md (which could be found in this repository). It has 88 columns (86 + activity + subject.id).
 
 General implementation approach:
+
 1. Merge the training and test sets to create one data set.
 2. Extract mean and standard deviation of each measurement. (get all columns with "[mM]ean" or "[sS]td" in the name).
 3. Replace with descriptive names
