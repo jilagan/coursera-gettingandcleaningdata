@@ -13,6 +13,8 @@
 
 ## Resulting Data:
 * 88 Columns (1 activity, 1 subject, 86 from observation data set)
+* 180 rows (check: 6 activities x 30 subjects)
+* Comma delimited (for more convenient loading via read.csv)
 
 ## Columns
 
