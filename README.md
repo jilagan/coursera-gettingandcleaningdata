@@ -24,7 +24,7 @@ coursera-gettingandcleaningdata
 
 1. Clone the repository as follows: git clone https://github.com/jilagan/coursera-gettingandcleaningdata.git
 
-2. Unzip the file "UCI HAR Dataset.zip" such as the "UCI HAR Dataset" directory is at the same level as the "coursera-gettingandcleaningdata" directory. NOTE: I didn't want to place the Samsung Directory in the same working directory as the git project. This is to make the repository free from extraneous files and to make it more convenient for you to test.
+2. Unzip the file "UCI HAR Dataset.zip" such as the "UCI HAR Dataset" directory is at the same level as the "coursera-gettingandcleaningdata" directory. NOTE: I didn't want to place the Samsung Directory in the same working directory as the git project. This is to make the repository free from extraneous files and to make it more convenient for you to test. IF YOU ABSOLUTELY MUST run the script with the assumption that the test data is in the working directory, just change the value of the data_dir variable in the script to point to the current (working) directory.
 
 3. In R, set the working directory to "coursera-gettingandcleaningdata"
 
