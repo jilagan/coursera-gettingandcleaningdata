@@ -18,7 +18,7 @@ coursera-gettingandcleaningdata
 5. Replace activy id with more descriptive activity label
 6. Get average (mean) per activity and subject
 7. Rename columns (except activity and subject) to include 'Average.' as prefix.
-8. Write results to a comma delimited file 'tidy_data.txt'.
+8. Write results to a comma delimited file 'tidy_data.txt'. (I chose comma-delimited since I find it more convenient to use read.csv than any other read-file function. It was just a matter of personal preference.)
 
 ##To set up on your machine:
 
