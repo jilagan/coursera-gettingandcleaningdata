@@ -1,15 +1,15 @@
 coursera-gettingandcleaningdata
 ===============================
 
-Coursera Getting and Cleaning Data Final Project
+#Coursera Getting and Cleaning Data Final Project
 
-Implementation notes:
+##Implementation notes:
 
 * I chose all columns with mean and std in the name, regardless of whether they would be ultimately meaningful or not.
 * I didn't combine variables with X, Y and Z since I wasn't sure if it would make sense to do so.
 * The final tidy data is described in CodeBook.md (which could be found in this repository). It has 88 columns (86 + activity + subject.id).
 
-General implementation approach:
+##General implementation approach:
 
 1. Merge the training and test sets to create one data set.
 2. Extract mean and standard deviation of each measurement. (get all columns with "[mM]ean" or "[sS]td" in the name).
@@ -20,7 +20,7 @@ General implementation approach:
 7. Rename columns (except activity and subject) to include 'Average.' as prefix.
 8. Write results to a comma delimited file 'tidy_data.txt'.
 
-To set up on your machine:
+##To set up on your machine:
 
 1. Clone the repository as follows:
 
