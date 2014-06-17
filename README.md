@@ -22,9 +22,7 @@ coursera-gettingandcleaningdata
 
 ##To set up on your machine:
 
-1. Clone the repository as follows:
-
-git clone https://github.com/jilagan/coursera-gettingandcleaningdata.git
+1. Clone the repository as follows: git clone https://github.com/jilagan/coursera-gettingandcleaningdata.git
 
 2. Unzip the file "UCI HAR Dataset.zip" such as the "UCI HAR Dataset" directory is at the same level as the "coursera-gettingandcleaningdata" directory. 
 
